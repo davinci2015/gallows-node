@@ -1,5 +1,5 @@
-const controller = require('./controller');
-const words = require('./words');
+const controller = require('../controller/controller');
+const words = require('../content/words');
 
 var Game = (function() {
 

@@ -1,6 +1,6 @@
 // Modules import
 const readline = require('readline');
-var game = require('./game.js').Game;
+var game = require('./app/model/game.js').Game;
 
 // const rl = readline.createInterface({
 //   input: process.stdin,

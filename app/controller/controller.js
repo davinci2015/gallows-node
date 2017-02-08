@@ -1,5 +1,5 @@
-const view = require('./view');
-const asciiArt = require('./ascii');
+const view = require('../view/view');
+const asciiArt = require('../content/ascii');
 
 var printGallows = (lifes) => {
 	view.decodeAndPrint(asciiArt.gallows[lifes.toString()]);
