@@ -1,0 +1,23 @@
+{
+  "name": "gallows-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "atob": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davinci2015/gallows-node.git"
+  },
+  "author": "Danijel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davinci2015/gallows-node/issues"
+  },
+  "homepage": "https://github.com/davinci2015/gallows-node#readme"
+}
