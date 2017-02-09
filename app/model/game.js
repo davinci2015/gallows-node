@@ -10,10 +10,11 @@ var Game = (function() {
     var level = 1;      // level
     var currHint;       // Current displayed hint
 
-	var hiddenWord;     // Hidden word / string
-    var letterNum;      // Number of letter in word
-	var wordObj;        // Contains word, category and array of hints
-    var hitCounter = 0; // Count user hits
+	var hiddenWord;             // Hidden word / string
+    var letterNum;              // Number of letter in word
+	var wordObj;                // Contains word, category and array of hints
+    var hitCounter = 0;         // Count user hits
+    var unmaskedLetters = [];   // Array of unmasked letters
 
     /**
      * Method for masking string/word
@@ -40,8 +41,9 @@ var Game = (function() {
     /**
      * Clear screen
      * and print necessary information
+     * @param requestInput {Boolean} - if set to false input will not be requested
      */
-	function refreshScreen() {
+	function refreshScreen(requestInput) {
         view.clearScreen();
         // Print level
         view.print('Level:', level);
@@ -58,7 +60,7 @@ var Game = (function() {
         // Print hidden word
         view.print(`\n${hiddenWord}`);
         // Request input from user
-        controller.requestInput(handleInput);
+        if (requestInput !== false) controller.requestInput(handleInput);
     }
 
     /**
@@ -78,20 +80,26 @@ var Game = (function() {
      */
 	function checkForHit(character) {
         var hit = false;
+        character = character.toLowerCase();
 
         // search for letter
         for (var i = 0; i < wordObj.word.length; i++) {
-            if (wordObj.word[i].toLowerCase() == character.toLowerCase()) {
+            // if user hit letter and letter is not unmasked
+            if (wordObj.word[i].toLowerCase() == character &&
+                unmaskedLetters.indexOf(character) == -1)
+            {
                 hiddenWord = util.replaceCharacterInString(hiddenWord, i, character.toLowerCase());
+                unmaskedLetters.push(character);
                 hitCounter++;
                 hit = true;
             }
         }
 
-        if (!hit) life--;
-        /**
-         * TODO - implemenation when user is dead
-         */
+        if (!hit && --life === 0) {
+            refreshScreen(false);
+            view.print('Dead.');
+            process.exit();
+        }
     }
 
     /**
@@ -108,6 +116,7 @@ var Game = (function() {
      * Reinitialize counters and restart game
      */
     function restartGame() {
+        unmaskedLetters = [];
         hitCounter = 0;
         currHint = '';
         start();
