@@ -1,11 +1,15 @@
 {
-  "name": "gallows-node",
+  "name": "gallows-game",
   "version": "1.0.0",
-  "description": "",
+  "description": "Gallows Game written in Node.js",
   "main": "main.js",
   "dependencies": {
     "atob": "^2.0.3"
   },
+  "bin": {
+    "gallows" : "bin/gallows.js"
+  },
+  "preferGlobal" : "true",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,7 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/davinci2015/gallows-node.git"
   },
-  "author": "Danijel",
+  "author": "Danijel Vincijanović",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/davinci2015/gallows-node/issues"
