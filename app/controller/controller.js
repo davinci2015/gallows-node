@@ -1,15 +1,29 @@
+const readline = require('readline');
 const view = require('../view/view');
 const asciiArt = require('../content/ascii');
 
-var printGallows = (lifes) => {
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    terminal: false
+});
+
+var printGallows = lifes => {
 	view.decodeAndPrint(asciiArt.gallows[lifes.toString()]);
-}
+};
 
-var printWord = (word) => {
+var printWord = word => {
 	view.print(word);
-}
+};
 
-module.exports = { 
+var requestInput = callback => {
+    rl.question('Enter letter: ', letter => {
+        callback(letter);
+    });
+};
+
+module.exports = {
 	printGallows,
 	printWord,
-}
+    requestInput
+};
