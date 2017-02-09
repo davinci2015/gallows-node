@@ -5,7 +5,7 @@ const view = require('../view/view');
 
 var Game = (function() {
 
-	var life = 3;
+	var life = 5;
 	var hint = 3;
     var currHint;
 
