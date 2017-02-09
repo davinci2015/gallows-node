@@ -1,15 +1,15 @@
 {
   "name": "gallows-game",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Gallows Game written in Node.js",
   "main": "main.js",
   "dependencies": {
     "atob": "^2.0.3"
   },
   "bin": {
-    "gallows" : "bin/gallows.js"
+    "gallows": "bin/gallows.js"
   },
-  "preferGlobal" : "true",
+  "preferGlobal": "true",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
