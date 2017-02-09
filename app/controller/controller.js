@@ -12,10 +12,6 @@ var printGallows = lifes => {
 	view.decodeAndPrint(asciiArt.gallows[lifes.toString()]);
 };
 
-var printWord = word => {
-	view.print(word);
-};
-
 var requestInput = callback => {
     rl.question('Enter letter: ', letter => {
         callback(letter);
@@ -24,6 +20,5 @@ var requestInput = callback => {
 
 module.exports = {
 	printGallows,
-	printWord,
     requestInput
 };

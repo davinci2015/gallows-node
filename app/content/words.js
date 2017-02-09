@@ -1,12 +1,12 @@
 module.exports = [
 	{
-		id: 1, 
 		word: 'Barack Obama',
+		category: 'Famous people',
 		hints: ['prvi', 'drugi', 'treci'],
 	},
 	{
-		id: 2, 
 		word: 'Donald Trump',
+		category: 'Famous people',
 		hints: ['prvi', 'drugi', 'treci'],
 	}
 ];

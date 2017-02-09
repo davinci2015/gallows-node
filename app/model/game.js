@@ -6,7 +6,8 @@ const view = require('../view/view');
 var Game = (function() {
 
 	var life = 3;
-	var hint = 5;
+	var hint = 3;
+    var currHint;
 
 	var hiddenWord;
     var letterNum;
@@ -27,9 +28,17 @@ var Game = (function() {
 
 	function refreshScreen() {
         view.clearScreen();
+        view.print(`Category: ${wordObj.category}`);
+        view.print(`Hints: ${hint} (type 'hint' for hint)`);
+        view.print(currHint != undefined ? currHint : '');
         controller.printGallows(life);
-        controller.printWord(`\n${hiddenWord}`);
+        view.print(`\n${hiddenWord}`);
         controller.requestInput(handleInput);
+    }
+
+    function useHint() {
+        currHint = wordObj.hints.pop();
+        hint--;
     }
 
 	function checkForHit(character) {
@@ -47,9 +56,22 @@ var Game = (function() {
         if (!hit) life--;
     }
 
+    function userRevealedWord() {
+        console.log("Done!");
+    }
+
 	function handleInput(letter) {
-        checkForHit(letter);
+        // Check if user wants hint
+        if (letter == 'hint' && hint > 0)
+            useHint();
+        // Else check if user hit letter
+        else
+            checkForHit(letter);
+
+        // Clear screen and print gallows
         refreshScreen();
+        // Check if user revealed whole word
+        if (hitCounter == letterNum) userRevealedWord();
     }
 
 	function start() {
